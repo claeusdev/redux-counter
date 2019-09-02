@@ -1,12 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-function App() {
+const incrementValue = () => {
+  return {
+    type: 'INCREMENT',
+  };
+};
+function App({count, increment}) {
+  console.log(count, increment);
   return (
     <main class="Counter">
-      <p class="count">0</p>
+      <p class="count">{count}</p>
       <section class="controls">
-        <button>Increment</button>
+        <button onClick={() => increment()}>Increment</button>
         <button>Decrement</button>
         <button>Reset</button>
       </section>
@@ -18,8 +24,12 @@ const mapStateToProps = state => {
   return state;
 };
 
-const mapDispatchToProps = () => {
-  return {};
+const mapDispatchToProps = dispatch => {
+  return {
+    increment: () => {
+      dispatch(incrementValue());
+    },
+  };
 };
 
 export default connect(
