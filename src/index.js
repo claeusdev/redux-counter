@@ -11,6 +11,7 @@ const initialState = {
 
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';
+const RESET = 'RESET';
 
 const reducer = (state = initialState, action) => {
   if (action.type === INCREMENT) {
@@ -21,6 +22,8 @@ const reducer = (state = initialState, action) => {
     return {
       count: state.count - 1,
     };
+  } else if (action.type === RESET) {
+    return {count: 0};
   }
   return state;
 };

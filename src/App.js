@@ -12,15 +12,19 @@ const decrement = () => {
     type: 'DECREMENT',
   };
 };
-
-function App({count, increment, decrement}) {
+const reset = () => {
+  return {
+    type: 'RESET',
+  };
+};
+function App({count, increment, decrement, reset}) {
   return (
     <main className="Counter">
       <p className="count">{count}</p>
       <section className="controls">
         <button onClick={() => increment()}>Increment</button>
         <button onClick={() => decrement()}>Decrement</button>
-        <button>Reset</button>
+        <button onClick={() => reset()}>Reset</button>
       </section>
     </main>
   );
@@ -33,6 +37,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   increment,
   decrement,
+  reset,
 };
 
 export default connect(
